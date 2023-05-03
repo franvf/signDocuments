@@ -39,7 +39,6 @@ contract signDocs is Ownable {
         isDocSignedBy[msg.sender][documentHash] = true; //Mark the original document as signed by the owner
     }
 
-    //@audit-issue -> CHEK https://solidity-by-example.org/signature/
     function userSignsDocument(bytes32 documentHash, string memory signature) external isRegisteredUser { 
         require(bytes(signature).length > 0, "Signature length must be larger than zero");
         require(isDocSignedBy[owner()][documentHash], "Owner must sign the contract first");
